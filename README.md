@@ -1,2 +1,4 @@
 # crm
-A backend system for a CRM application with advanced features. The system should handle user authentication, customer and lead management, interaction tracking, and advanced analytics. Emphasise security best practices, including proper encryption and password storage. 
+### CRM Backend System
+
+This project is a backend system for a CRM application developed using the Go programming language and the Gin framework, with MongoDB for data storage. The system handles essential CRM functionalities, including user and customer management, interaction tracking, and advanced analytics, with a strong emphasis on security best practices such as proper encryption and password storage. Additionally, it supports role-based access control, activity notifications, and optional features like email integration and reporting. The application is containerized using Docker and is designed for easy deployment on cloud platforms like AWS, GCP, or Heroku. This repository includes comprehensive API documentation, test cases, and a detailed README file with database schema design, system architecture, and setup instructions.
