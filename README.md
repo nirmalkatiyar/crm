@@ -5,7 +5,8 @@ This project is a backend system for a CRM application developed using the Go pr
 
 
 ### Folder Structure
- ``` /crm     
+ ```
+/crm     
   |
   |-- /database
   |   |-- dbConnection.go           # DB connection management (e.g., loading environment variables)
