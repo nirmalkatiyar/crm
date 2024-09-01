@@ -5,50 +5,50 @@ This project is a backend system for a CRM application developed using the Go pr
 
 
 ### Folder Structure
-/crm     
-|
-|-- /database
-|   |-- dbConnection.go           # DB connection management (e.g., loading environment variables)
-|
-|-- /controllers
-|   |-- userController.go         # Handler functions for user-related operations
-|   |-- customerController.go     # Handler functions for customer-related operations
-|   |-- interactionController.go  # Handler functions for interaction management
-|   |-- ticketController.go       # Handler functions for ticket
-|   |-- expImportController.go    # Handler functions for export import data
-|
-|-- /models
-|   |-- user.go                    # User model definition
-|   |-- customer.go                # Customer model definition
-|   |-- interaction.go             # Interaction model definition
-|   |-- ticket.go                  # ticket-related models
-|
-|-- /routes
-|   |-- userRoutes.go             # Routes related to user operations
-|   |-- customerRoutes.go         # Routes related to customer operations
-|   |-- authRoutes.go             # Routes related to authentication
-|   |-- exportImportDataRoutes.go # Routes related to analytics and reporting
-|
-|-- /middleware
-|   |-- middleware.go             # Middleware for authentication
-|   |-- rateLimit.go              # Middleware for rate limiting
-|
-|-- /helpers
-|   |-- auth.go                    # Helper function for authentication operations
-|   |-- customer.go                # Helper function for customer operations
-|   |-- user.go                    # Helper function for user operations
-|
-|-- /utils
-|   |-- constant.go               # Utility functions for JWT handling
-|   |-- email.go                  # Utility functions for email notification
-|
-|-- README.md                      # Project overview and setup instructions
-|-- Dockerfile                     # Dockerfile for containerizing the application
-|-- docker-compose.yml             # Docker Compose file for multi-container setup
-|-- go.mod                         # Go module file
-|-- go.sum                         # Go checksum file
-|-- main.go                        # Entry point for the application
-
+  /crm     
+  |
+  |-- /database
+  |   |-- dbConnection.go           # DB connection management (e.g., loading environment variables)
+  |
+  |-- /controllers
+  |   |-- userController.go         # Handler functions for user-related operations
+  |   |-- customerController.go     # Handler functions for customer-related operations
+  |   |-- interactionController.go  # Handler functions for interaction management
+  |   |-- ticketController.go       # Handler functions for ticket
+  |   |-- expImportController.go    # Handler functions for export import data
+  |
+  |-- /models
+  |   |-- user.go                    # User model definition
+  |   |-- customer.go                # Customer model definition
+  |   |-- interaction.go             # Interaction model definition
+  |   |-- ticket.go                  # ticket-related models
+  |
+  |-- /routes
+  |   |-- userRoutes.go             # Routes related to user operations
+  |   |-- customerRoutes.go         # Routes related to customer operations
+  |   |-- authRoutes.go             # Routes related to authentication
+  |   |-- exportImportDataRoutes.go # Routes related to analytics and reporting
+  |
+  |-- /middleware
+  |   |-- middleware.go             # Middleware for authentication
+  |   |-- rateLimit.go              # Middleware for rate limiting
+  |
+  |-- /helpers
+  |   |-- auth.go                    # Helper function for authentication operations
+  |   |-- customer.go                # Helper function for customer operations
+  |   |-- user.go                    # Helper function for user operations
+  |
+  |-- /utils
+  |   |-- constant.go               # Utility functions for JWT handling
+  |   |-- email.go                  # Utility functions for email notification
+  |
+  |-- README.md                      # Project overview and setup instructions
+  |-- Dockerfile                     # Dockerfile for containerizing the application
+  |-- docker-compose.yml             # Docker Compose file for multi-container setup
+  |-- go.mod                         # Go module file
+  |-- go.sum                         # Go checksum file
+  |-- main.go                        # Entry point for the application
+  
 
 
 ## Features
