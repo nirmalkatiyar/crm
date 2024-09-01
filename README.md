@@ -253,8 +253,8 @@ go run main.go
          "created_at": "2024-09-01T07:44:11+05:30",
          "updated_at": "2024-09-01T07:44:11+05:30"
      }
- }
-    ```
+ }```
+ 
 **user/signin**
     -Curl: 
      ```curl --location 'localhost:8080/user/signin' \
@@ -263,9 +263,8 @@ go run main.go
  --data-raw '{
          "Email": "sita@gmail.com",
          "Password": "$15$lShiva"
-     }'
-    ```
-    -Response:
+     }' ```
+-Response:
      ```{
      "msg": "User logged in successfully",
      "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJFbWFpbCI6InNpdGFAZ21haWwuY29tIiwiTmFtZSI6InNpdGEiLCJVaWQiOiI2NmQzY2RmM2U3MTU5MGYyODMyMGY2M2EiLCJSb2xlIjoiQURNSU4iLCJleHAiOjE3MjUyNDM0MDh9.eqae6DvxivdkH4kuZnlT1Dw3CuwalJbE_TFKM4giU20",
@@ -334,53 +333,70 @@ Reaponse:
 **users/:user_id**
 -Curl : 
 ```
- curl --location 'localhost:8080/users/66d321f59940e15df21d71b3' \
- --header 'token: eyJhbGciOiJIUzI1NiIsInR5cCI6Ikp1ZGYyMWQ3MWIzIiwiUm9sZSI6IkFETUlOIiwiZXhwIjoxNzI1MTk5MjIxfQ.VbHxfTHGvAgYVxETlARgxBtGbUdMsBuwJltNsTbH41k' \
- --header 'Content-Type: multipart/form-data' \
- --data ''
+  curl --location 'localhost:8080/users/66d321f59940e15df21d71b3' \
+  --header 'token: eyJhbGciOiJIUzI1NiIsInR5cCI6Ikp1ZGYyMWQ3MWIzIiwiUm9sZSI6IkFETUlOIiwiZXhwIjoxNzI1MTk5MjIxfQ.VbHxfTHGvAgYVxETlARgxBtGbUdMsBuwJltNsTbH41k' \
+  --header 'Content-Type: multipart/form-data' \
+  --data ''
 ```
 
--Response: ```{
-    "id": "66d321f59940e15df21d71b3",
-    "user_id": "66d321f59940e15df21d71b3",
-    "name": "Nirmal",
-    "password": "$2a$15$KAKnHqDbrgn/4lZIxJ1Unu6RyRHn4CvmWgAAe3c3thV8IE0UPbkmu",
-    "email": "abc@gmail.com",
-    "role": "USER",
-    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJFbTUlOIiwiZXhwIjoxNzItNsTbH41k",
-    "created_at": "2024-08-31T14:00:21Z",
-    "updated_at": "2024-08-31T14:00:21Z"
-}```
+-Response: 
+```
+  {
+      "id": "66d321f59940e15df21d71b3",
+      "user_id": "66d321f59940e15df21d71b3",
+      "name": "Nirmal",
+      "password": "$2a$15$KAKnHqDbrgn/4lZIxJ1Unu6RyRHn4CvmWgAAe3c3thV8IE0UPbkmu",
+      "email": "abc@gmail.com",
+      "role": "USER",
+      "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJFbTUlOIiwiZXhwIjoxNzItNsTbH41k",
+      "created_at": "2024-08-31T14:00:21Z",
+      "updated_at": "2024-08-31T14:00:21Z"
+  }
+```
 
 **user/:user_id**
--Curl: ```curl --location --request DELETE 'localhost:8080/users/66d321f59940e15df21d71b3' \
---header 'token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJFbWFjU5OTQwZTE1ZGYyMWQ3MWIzIiwiUm9sZSI6IkFETUlOIiwiZXhwIjoxNzI1MTk5MjIxfQ.VbHxfTHGvAgYVxETlARgxBtGbUdMsBuwJltNsTbH41k' \
---header 'Content-Type: multipart/form-data' \
---data ''```
+-Curl: 
+```
+ curl --location --request DELETE 'localhost:8080/users/66d321f59940e15df21d71b3' \
+ --header 'token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJFbWFjU5OTQwZTE1ZGYyMWQ3MWIzIiwiUm9sZSI6IkFETUlOIiwiZXhwIjoxNzI1MTk5MjIxfQ.VbHxfTHGvAgYVxETlARgxBtGbUdMsBuwJltNsTbH41k' \
+ --header 'Content-Type: multipart/form-data' \
+ --data ''```
 
--Response: ```{
-    "message": "User deleted successfully"
-}```
+-Response: 
+```
+ {
+     "message": "User deleted successfully"
+ }
+```
 
 **user/:user_id**
--Curl: ```curl --location --request PUT 'localhost:8080/users/66d3233ae3d3bbd29769c153' \
---header 'token: eyJhbGciOiJIUzI1NiIsInRU5OTQwZTE1ZGYyMWQ3MWIzIiwiUm9sZSI6IkFETUlOIifTHGvAgYVxETlARgxBtGbUdMsBuwJltNsTbH41k' \
---header 'Content-Type: multipart/form-data' \
---data '{
-    "name":"sahil"
-}'```
--Response: ```{
-    "message": "user updated successfully"
-}```
+-Curl: 
+```
+ curl --location --request PUT 'localhost:8080/users/66d3233ae3d3bbd29769c153' \
+ --header 'token: eyJhbGciOiJIUzI1NiIsInRU5OTQwZTE1ZGYyMWQ3MWIzIiwiUm9sZSI6IkFETUlOIifTHGvAgYVxETlARgxBtGbUdMsBuwJltNsTbH41k' \
+ --header 'Content-Type: multipart/form-data' \
+ --data '{
+     "name":"sahil"
+ }'
+```
+-Response: 
+```
+ {
+     "message": "user updated successfully"
+ }
+```
 
 **users/meetings/:customer_id**
- -Curl: ```curl --location 'localhost:8080/users/meetings/66d324c3e3d3bbd29769c154' \
- --header 'token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJFbWFpiwiZXhwIjoxNzI1MTk5MjIxfQ.VbHxfTHGvAgYVxETlARgxBtGbUdMsBuwJltNsTbH41k' \
- --header 'Content-Type: multipart/form-data' \
- --data '{}'```
+ -Curl: 
+ ```
+  curl --location 'localhost:8080/users/meetings/66d324c3e3d3bbd29769c154' \
+   --header 'token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJFbWFpiwiZXhwIjoxNzI1MTk5MjIxfQ.VbHxfTHGvAgYVxETlARgxBtGbUdMsBuwJltNsTbH41k' \
+   --header 'Content-Type: multipart/form-data' \
+   --data '{}'
+```
 
 -Response:
 ```
-{
-    "InsertedID": "66d3d83afff6681e0956ca2d"
-}```
+ {
+     "InsertedID": "66d3d83afff6681e0956ca2d"
+ }```
