@@ -228,7 +228,7 @@ go run main.go
 **user/signup**
 -Curl:  
 ```
- curl --location 'localhost:8080/user/signup' \
+curl --location 'localhost:8080/user/signup' \
  --header 'token: eyJhbGcik' \
  --header 'Content-Type: multipart/form-data' \
  --data-raw '{
@@ -239,7 +239,7 @@ go run main.go
      }'
 ```
 -Response:
-     ```
+```
      {
      "message": "User created successfully",
      "user": {
@@ -253,19 +253,23 @@ go run main.go
          "created_at": "2024-09-01T07:44:11+05:30",
          "updated_at": "2024-09-01T07:44:11+05:30"
      }
- }```
+ }
+```
  
 **user/signin**
-    -Curl: 
-     ```curl --location 'localhost:8080/user/signin' \
- --header 'token: eyJhbGciOiTHGvAgYVxETlARgxBtGbUdMsBuwJltNsTbH41k' \
- --header 'Content-Type: multipart/form-data' \
- --data-raw '{
-         "Email": "sita@gmail.com",
-         "Password": "$15$lShiva"
-     }' ```
+-Curl : 
+```
+curl --location 'localhost:8080/user/signin' \
+      --header 'token: eyJhbGciOiTHGvAgYVxETlARgxBtGbUdMsBuwJltNsTbH41k' \
+      --header 'Content-Type: multipart/form-data' \
+      --data-raw '{
+              "Email": "sita@gmail.com",
+              "Password": "$15$lShiva"
+     }'
+```
 -Response:
-     ```{
+```
+{
      "msg": "User logged in successfully",
      "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJFbWFpbCI6InNpdGFAZ21haWwuY29tIiwiTmFtZSI6InNpdGEiLCJVaWQiOiI2NmQzY2RmM2U3MTU5MGYyODMyMGY2M2EiLCJSb2xlIjoiQURNSU4iLCJleHAiOjE3MjUyNDM0MDh9.eqae6DvxivdkH4kuZnlT1Dw3CuwalJbE_TFKM4giU20",
      "user": {
@@ -279,7 +283,8 @@ go run main.go
          "created_at": "2024-09-01T02:14:11Z",
          "updated_at": "2024-09-01T02:16:48Z"
      }
-}```
+}
+```
 
 **users**
 -Curl : 
@@ -289,33 +294,33 @@ go run main.go
   --header 'Content-Type: multipart/form-data' \
   --data ''
 ```
+-Reaponse: 
 
-Reaponse: 
 ```
-[
-    {
+    [
+      {
         "id": "66d321f59940e15df21d71b3",
         "user_id": "66d321f59940e15df21d71b3",
         "name": "Nirmal",
         "password": "$2a$15$KAKnHqDbrgn/4lZIxJ1Unu6RyRHn4CvmWgAAe3c3thV8IE0UPbkmu",
         "email": "abc@gmail.com",
         "role": "USER",
-        "token": "eyJhbGciOiJIUzIZTE1ZGYyMWQ3MWIzIiwiUm9sZSI6IkFETUlOIiwiZXhwIjoxNzI1MTk5MjIxfQ.VbHxfTHGvAgYVxETlARgxBtGbUdMsBuwJltNsTbH41k",
+        "token": "eyJiwiZXhwIjoxNzI1MTk5MjIxfQ.VbHxfTHGvAgYVxETlARgxBtGbUdMsBuwJltNsTbH41k",
         "created_at": "2024-08-31T14:00:21Z",
         "updated_at": "2024-08-31T14:00:21Z"
-    },
-    {
+      },
+      {
         "id": "66d3233ae3d3bbd29769c153",
         "user_id": "66d3233ae3d3bbd29769c153",
         "name": "temp",
         "password": "$2a$15$Jg/2lUsl4Cts/mDPtVMt0eQhE3OTa5kELElvUyj1JoSL39ApZPeuO",
         "email": "abcd@gmail.com",
         "role": "USER",
-        "token": "eyJhbGciOiJIUzI1NiIs\MiLCJSb2xlIjoiVVNFUiIsImV4cCI6MTcyNTE5OTc4OH0.a3PKeom_j9LWtCW1YZszaBBVV-VAPnj9fjZaEfYSBYA",
+        "token": "YA",
         "created_at": "2024-08-31T14:05:46Z",
         "updated_at": "2024-08-31T14:09:48Z"
-    },
-    {
+      },
+      {
         "id": "66d3cdf3e71590f28320f63a",
         "user_id": "66d3cdf3e71590f28320f63a",
         "name": "sita",
@@ -325,11 +330,9 @@ Reaponse:
         "token": "eyJhbGciOiJIUzI1NlIjoiQURNSU4iLCJleHAiOjE3MjUyNDM0MDh9.eqae6DvxivdkH4kuZnlT1Dw3CuwalJbE_TFKM4giU20",
         "created_at": "2024-09-01T02:14:11Z",
         "updated_at": "2024-09-01T02:16:48Z"
-    }
-]
-
+      }
+    ]
 ```
-
 **users/:user_id**
 -Curl : 
 ```
