@@ -118,3 +118,40 @@ This project is a backend system for a CRM application developed using the Go pr
  - Update Interaction:                PATCH /interactions/:interaction_id
  - Delete Interaction:                DELETE /interactions/:interaction_id
 
+### System Diagram
+```  +-------------------+
+  | Client Application|
+  +--------+----------+
+           |
+           v
+  +--------+----------+
+  |     API Gateway   |--------------------+
+  +--------+----------+                    |     
+           |                               |
+           v                               |
++----------------------------+             |
+|  Authentication &          |             |
+|  Authorization (JWT)       |             |
++----------------------------+             |
+           |                               |
+           v                               v
+  +--------+----------+----     -+--------------------+
+  |        |          |           |                  |
+  v        v          v           v                  v
++---------+   +------+-------+ +-------+------+ +---------------+
+| User    |   | Customer     | | Interaction |  | Export/Import |
+| Service |   | Service      | | Service     |  | Data Service  |
++---------+   +--------------+ +-------------+  +------+---------
+    |             |                  |                 |
+    |             v                  v                 |
+    |     +-------------+ +---------------+            |
+    |     | Import/Export|  | Notification|            |
+    |     | Service      |  | Service     |            |
+    |     +-------------+ +---------------+            |
+    |                |                                 |
+    |                v                                 |
+    |     +--------------------------+                 |
+    |   |        Mongo DB            |                 |
+    |---|        Database            |-----------------|
+        +----------------------------+
+```
