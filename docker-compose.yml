@@ -1,0 +1,33 @@
+version: '3.8'
+
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: crm
+    environment:
+      - PORT=8080
+      - MONGO_URI=mongodb://mongo:27017/crm
+      - SECRET_KEY=2222
+      - USER_SECRET_KEY=2222
+      - CUSTOMER_SECRET_KEY=2222
+      - SMTP_HOST=smtp.gmail.com
+      - SMTP_PORT=587
+      - SMTP_MAIL=crm@gmail.com
+      - SMTP_PASSWORD=2222
+    ports:
+      - "8080:8080"
+    depends_on:
+      - mongo
+
+  mongo:
+    image: mongo:7.0
+    ports:
+      - "27017:27017"
+    environment:
+      MONGO_INITDB_DATABASE: crm
+
+networks:
+  default:
+    driver: bridge
