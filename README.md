@@ -282,7 +282,7 @@ go run main.go
 }```
 
 **users**
--Curll : 
+-Curl : 
 ```
   curl --location 'localhost:8080/users' \
   --header 'token: 1ZGYyMWQ3MWIzIiwiUm9sZSI6IkFETUlOIiwiZXhwIjoxNzI1MTk5MjIxfQ.VbHxfTHGvAgYVxETlARgxBtGbUdMsBuwJltNsTbH41k' \
@@ -341,62 +341,63 @@ Reaponse:
 
 -Response: 
 ```
-  {
-      "id": "66d321f59940e15df21d71b3",
-      "user_id": "66d321f59940e15df21d71b3",
-      "name": "Nirmal",
-      "password": "$2a$15$KAKnHqDbrgn/4lZIxJ1Unu6RyRHn4CvmWgAAe3c3thV8IE0UPbkmu",
-      "email": "abc@gmail.com",
-      "role": "USER",
-      "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJFbTUlOIiwiZXhwIjoxNzItNsTbH41k",
-      "created_at": "2024-08-31T14:00:21Z",
-      "updated_at": "2024-08-31T14:00:21Z"
+   {
+       "id": "66d321f59940e15df21d71b3",
+       "user_id": "66d321f59940e15df21d71b3",
+       "name": "Nirmal",
+       "password": "$2a$15$KAKnHqDbrgn/4lZIxJ1Unu6RyRHn4CvmWgAAe3c3thV8IE0UPbkmu",
+       "email": "abc@gmail.com",
+       "role": "USER",
+       "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJFbTUlOIiwiZXhwIjoxNzItNsTbH41k",
+       "created_at": "2024-08-31T14:00:21Z",
+       "updated_at": "2024-08-31T14:00:21Z"
+   }
+```
+
+**user/:user_id**
+-Curl: 
+```
+  curl --location --request DELETE 'localhost:8080/users/66d321f59940e15df21d71b3' \
+  --header 'token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJFbWFjU5OTQwZTE1ZGYyMWQ3MWIzIiwiUm9sZSI6IkFETUlOIiwiZXhwIjoxNzI1MTk5MjIxfQ.VbHxfTHGvAgYVxETlARgxBtGbUdMsBuwJltNsTbH41k' \
+  --header 'Content-Type: multipart/form-data' \
+  --data ''
+```
+
+-Response: 
+```
+ '{
+      "message": "User deleted successfully"
   }
 ```
 
 **user/:user_id**
 -Curl: 
 ```
- curl --location --request DELETE 'localhost:8080/users/66d321f59940e15df21d71b3' \
- --header 'token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJFbWFjU5OTQwZTE1ZGYyMWQ3MWIzIiwiUm9sZSI6IkFETUlOIiwiZXhwIjoxNzI1MTk5MjIxfQ.VbHxfTHGvAgYVxETlARgxBtGbUdMsBuwJltNsTbH41k' \
- --header 'Content-Type: multipart/form-data' \
- --data ''```
-
--Response: 
-```
- {
-     "message": "User deleted successfully"
- }
-```
-
-**user/:user_id**
--Curl: 
-```
  curl --location --request PUT 'localhost:8080/users/66d3233ae3d3bbd29769c153' \
- --header 'token: eyJhbGciOiJIUzI1NiIsInRU5OTQwZTE1ZGYyMWQ3MWIzIiwiUm9sZSI6IkFETUlOIifTHGvAgYVxETlARgxBtGbUdMsBuwJltNsTbH41k' \
- --header 'Content-Type: multipart/form-data' \
- --data '{
-     "name":"sahil"
- }'
+  --header 'token: eyJhbGciOiJIUzI1NiIsInRU5OTQwZTE1ZGYyMWQ3MWIzIiwiUm9sZSI6IkFETUlOIifTHGvAgYVxETlARgxBtGbUdMsBuwJltNsTbH41k' \
+  --header 'Content-Type: multipart/form-data' \
+  --data '{
+      "name":"sahil"
+  }'
 ```
 -Response: 
 ```
  {
-     "message": "user updated successfully"
- }
+      "message": "user updated successfully"
+  }
 ```
-
 **users/meetings/:customer_id**
- -Curl: 
+-Curl: 
  ```
-  curl --location 'localhost:8080/users/meetings/66d324c3e3d3bbd29769c154' \
-   --header 'token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJFbWFpiwiZXhwIjoxNzI1MTk5MjIxfQ.VbHxfTHGvAgYVxETlARgxBtGbUdMsBuwJltNsTbH41k' \
-   --header 'Content-Type: multipart/form-data' \
-   --data '{}'
+ curl --location 'localhost:8080/users/meetings/66d324c3e3d3bbd29769c154' \
+    --header 'token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJFbWFpiwiZXhwIjoxNzI1MTk5MjIxfQ.VbHxfTHGvAgYVxETlARgxBtGbUdMsBuwJltNsTbH41k' \
+    --header 'Content-Type: multipart/form-data' \
+    --data '{}'
 ```
 
 -Response:
 ```
- {
-     "InsertedID": "66d3d83afff6681e0956ca2d"
- }```
+  {
+      "InsertedID": "66d3d83afff6681e0956ca2d"
+  }
+```
