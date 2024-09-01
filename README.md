@@ -4,6 +4,22 @@
 This project is a backend system for a CRM application developed using the Go programming language and the Gin framework, with MongoDB for data storage. The system handles essential CRM functionalities, including user and customer management, interaction tracking, and advanced analytics, with a strong emphasis on security best practices such as proper encryption and password storage. Additionally, it supports role-based access control, activity notifications, and optional features like email integration and reporting. The application is containerized using Docker and is designed for easy deployment on cloud platforms like AWS, GCP, or Heroku. This repository includes comprehensive API documentation, test cases, and a detailed README file with database schema design, system architecture, and setup instructions.
 
 
+### Setup and Installation
+**Clone the repo**
+```
+git clone <github directory url >
+cd <project directory>
+```
+**Install dipendency**
+```
+go mod tidy
+```
+**Run Application**
+```
+go run main.go
+```
+
+
 ### Folder Structure
  ```
 /crm     
@@ -155,3 +171,190 @@ This project is a backend system for a CRM application developed using the Go pr
     |---|        Database            |-----------------|
         +----------------------------+
 ```
+## APIs
+**customer/signup**
+- Curl : ```curl --location 'localhost:8080/customer/signup' \
+--header 'token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJYVxETlARgxBtGbUdMsBuwJltNsTbH41k' \
+--header 'Content-Type: multipart/form-data' \
+--data-raw '{
+        "Name": "ramlal",
+        "Email": "ram@gmail.com",
+        "Password": "$2a$15$lShiva",
+        "Company": "TATA",
+        "Phone": "+91 35636621762"
+    }'```
+- Response : ```{
+    "insertId": {
+        "InsertedID": "66d3ccc9e71590f28320f639"
+    },
+    "message": "Customer created successfully"
+}```
+**customer/signin**
+  -Curl : ```curl --location 'localhost:8080/customer/signin' \
+--header 'token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1ZGYyMWQ3MWIzIiwiUm9sZSI6IkFETUlOIiwiZtGbUdMsBuwJltNsTbH41k' \
+--header 'Content-Type: multipart/form-data' \
+--data-raw '{
+        "Email": "ram@gmail.com",
+        "Password": "$2a$15$lShiva"
+    }'```
+  -Response:
+  ```{
+    "customer": {
+        "customer_id": "66d3ccc9e71590f28320f639",
+        "id": "66d3ccc9e71590f28320f639",
+        "name": "ramlal",
+        "email": "ram@gmail.com",
+        "password": "$2a$15$ngAkPv3vGF82A.z/VAIz8.QW/zaqGG0Ytu4TbOEOsXL0NBnjIItFW",
+        "company": "TATA",
+        "phone": "+91 35636621762",
+        "token": "token",
+        "created_at": "2024-09-01T02:09:13Z",
+        "updated_at": "2024-09-01T02:11:17Z"
+    },
+    "message": "Customer logged in successfully"
+}```
+
+**user/signup**
+-Curl:  ```curl --location 'localhost:8080/user/signup' \
+--header 'token: eyJhbGcik' \
+--header 'Content-Type: multipart/form-data' \
+--data-raw '{
+        "Email": "sita@gmail.com",
+        "Password": "$15$lShiva",
+        "name":"sita",
+        "role":"ADMIN"
+    }'```
+    -Response:
+    ```
+    {
+    "message": "User created successfully",
+    "user": {
+        "id": "66d3cdf3e71590f28320f63a",
+        "user_id": "66d3cdf3e71590f28320f63a",
+        "name": "sita",
+        "password": "$2a$15$hhJdAdiMr2Kk11/iqnf3EuO9aqFI/ZyVAm8GuucDsa4SU1EdxRmiC",
+        "email": "sita@gmail.com",
+        "role": "ADMIN",
+        "token": "eyJyODMyMGY2M2EiLCJSb2xE3M6o",
+        "created_at": "2024-09-01T07:44:11+05:30",
+        "updated_at": "2024-09-01T07:44:11+05:30"
+    }
+}
+    ```
+    **user/signin**
+    -Curl: ```curl --location 'localhost:8080/user/signin' \
+--header 'token: eyJhbGciOiTHGvAgYVxETlARgxBtGbUdMsBuwJltNsTbH41k' \
+--header 'Content-Type: multipart/form-data' \
+--data-raw '{
+        "Email": "sita@gmail.com",
+        "Password": "$15$lShiva"
+    }'```
+    -Response:
+    ```{
+    "msg": "User logged in successfully",
+    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJFbWFpbCI6InNpdGFAZ21haWwuY29tIiwiTmFtZSI6InNpdGEiLCJVaWQiOiI2NmQzY2RmM2U3MTU5MGYyODMyMGY2M2EiLCJSb2xlIjoiQURNSU4iLCJleHAiOjE3MjUyNDM0MDh9.eqae6DvxivdkH4kuZnlT1Dw3CuwalJbE_TFKM4giU20",
+    "user": {
+        "id": "66d3cdf3e71590f28320f63a",
+        "user_id": "66d3cdf3e71590f28320f63a",
+        "name": "sita",
+        "password": "$2a$15$hhJdAdiMr2Kk11/iqnf3EuO9aqFI/ZyVAm8GuucDsa4SU1EdxRmiC",
+        "email": "sita@gmail.com",
+        "role": "ADMIN",
+        "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJFbWFpbCI6InNpdGFAZ21haWwuY29tIiwiTmFtZSI6InNpdGEiLCJVaWQiOiI2NmQzY2RmM2U3MTU5MGYyODMyMGY2M2EiLCJSb2xlIjoiQURNSU4iLCJleHAiOjE3MjUyNDM0MDh9.eqae6DvxivdkH4kuZnlT1Dw3CuwalJbE_TFKM4giU20",
+        "created_at": "2024-09-01T02:14:11Z",
+        "updated_at": "2024-09-01T02:16:48Z"
+    }
+}```
+
+**users**
+-Curll : ```curl --location 'localhost:8080/users' \
+--header 'token: 1ZGYyMWQ3MWIzIiwiUm9sZSI6IkFETUlOIiwiZXhwIjoxNzI1MTk5MjIxfQ.VbHxfTHGvAgYVxETlARgxBtGbUdMsBuwJltNsTbH41k' \
+--header 'Content-Type: multipart/form-data' \
+--data ''```
+
+Reaponse: ```[
+    {
+        "id": "66d321f59940e15df21d71b3",
+        "user_id": "66d321f59940e15df21d71b3",
+        "name": "Nirmal",
+        "password": "$2a$15$KAKnHqDbrgn/4lZIxJ1Unu6RyRHn4CvmWgAAe3c3thV8IE0UPbkmu",
+        "email": "abc@gmail.com",
+        "role": "USER",
+        "token": "eyJhbGciOiJIUzIZTE1ZGYyMWQ3MWIzIiwiUm9sZSI6IkFETUlOIiwiZXhwIjoxNzI1MTk5MjIxfQ.VbHxfTHGvAgYVxETlARgxBtGbUdMsBuwJltNsTbH41k",
+        "created_at": "2024-08-31T14:00:21Z",
+        "updated_at": "2024-08-31T14:00:21Z"
+    },
+    {
+        "id": "66d3233ae3d3bbd29769c153",
+        "user_id": "66d3233ae3d3bbd29769c153",
+        "name": "temp",
+        "password": "$2a$15$Jg/2lUsl4Cts/mDPtVMt0eQhE3OTa5kELElvUyj1JoSL39ApZPeuO",
+        "email": "abcd@gmail.com",
+        "role": "USER",
+        "token": "eyJhbGciOiJIUzI1NiIs\MiLCJSb2xlIjoiVVNFUiIsImV4cCI6MTcyNTE5OTc4OH0.a3PKeom_j9LWtCW1YZszaBBVV-VAPnj9fjZaEfYSBYA",
+        "created_at": "2024-08-31T14:05:46Z",
+        "updated_at": "2024-08-31T14:09:48Z"
+    },
+    {
+        "id": "66d3cdf3e71590f28320f63a",
+        "user_id": "66d3cdf3e71590f28320f63a",
+        "name": "sita",
+        "password": "$2a$15$hhJdAdiMr2Kk11/iqnf3EuO9aqFI/ZyVAm8GuucDsa4SU1EdxRmiC",
+        "email": "sita@gmail.com",
+        "role": "ADMIN",
+        "token": "eyJhbGciOiJIUzI1NlIjoiQURNSU4iLCJleHAiOjE3MjUyNDM0MDh9.eqae6DvxivdkH4kuZnlT1Dw3CuwalJbE_TFKM4giU20",
+        "created_at": "2024-09-01T02:14:11Z",
+        "updated_at": "2024-09-01T02:16:48Z"
+    }
+]```
+
+**users/:user_id**
+-Curl : ```curl --location 'localhost:8080/users/66d321f59940e15df21d71b3' \
+--header 'token: eyJhbGciOiJIUzI1NiIsInR5cCI6Ikp1ZGYyMWQ3MWIzIiwiUm9sZSI6IkFETUlOIiwiZXhwIjoxNzI1MTk5MjIxfQ.VbHxfTHGvAgYVxETlARgxBtGbUdMsBuwJltNsTbH41k' \
+--header 'Content-Type: multipart/form-data' \
+--data ''```
+
+-Response: ```{
+    "id": "66d321f59940e15df21d71b3",
+    "user_id": "66d321f59940e15df21d71b3",
+    "name": "Nirmal",
+    "password": "$2a$15$KAKnHqDbrgn/4lZIxJ1Unu6RyRHn4CvmWgAAe3c3thV8IE0UPbkmu",
+    "email": "abc@gmail.com",
+    "role": "USER",
+    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJFbTUlOIiwiZXhwIjoxNzItNsTbH41k",
+    "created_at": "2024-08-31T14:00:21Z",
+    "updated_at": "2024-08-31T14:00:21Z"
+}```
+
+**user/:user_id**
+-Curl: ```curl --location --request DELETE 'localhost:8080/users/66d321f59940e15df21d71b3' \
+--header 'token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJFbWFjU5OTQwZTE1ZGYyMWQ3MWIzIiwiUm9sZSI6IkFETUlOIiwiZXhwIjoxNzI1MTk5MjIxfQ.VbHxfTHGvAgYVxETlARgxBtGbUdMsBuwJltNsTbH41k' \
+--header 'Content-Type: multipart/form-data' \
+--data ''```
+
+-Response: ```{
+    "message": "User deleted successfully"
+}```
+
+**user/:user_id**
+-Curl: ```curl --location --request PUT 'localhost:8080/users/66d3233ae3d3bbd29769c153' \
+--header 'token: eyJhbGciOiJIUzI1NiIsInRU5OTQwZTE1ZGYyMWQ3MWIzIiwiUm9sZSI6IkFETUlOIifTHGvAgYVxETlARgxBtGbUdMsBuwJltNsTbH41k' \
+--header 'Content-Type: multipart/form-data' \
+--data '{
+    "name":"sahil"
+}'```
+-Response: ```{
+    "message": "user updated successfully"
+}```
+
+**users/meetings/:customer_id**
+-Curl: ```curl --location 'localhost:8080/users/meetings/66d324c3e3d3bbd29769c154' \
+--header 'token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJFbWFpiwiZXhwIjoxNzI1MTk5MjIxfQ.VbHxfTHGvAgYVxETlARgxBtGbUdMsBuwJltNsTbH41k' \
+--header 'Content-Type: multipart/form-data' \
+--data '{}'```
+
+-Response:
+```
+{
+    "InsertedID": "66d3d83afff6681e0956ca2d"
+}```
